@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "lint-staged": {
-    "*.js": "eslint",
+    "*.tsx": "eslint",
     "*.scss": "stylelint-staged"
   },
   "scripts": {
