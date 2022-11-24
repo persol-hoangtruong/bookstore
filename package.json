@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "test": "yarn lint-staged",
     "lint:eslint": "eslint --ignore-pattern \"submodules/**\" \"./**/*.{js,jsx,ts,tsx}\"",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@types/node": "18.11.9",
