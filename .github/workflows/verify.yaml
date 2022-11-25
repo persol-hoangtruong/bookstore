@@ -1,0 +1,28 @@
+name: Verify commit
+run-name: ${{ github.actor }} is verifying commit
+on:
+  push:
+    branches:
+      - master
+      - staging
+      - dev
+
+env:
+  APP_NAME: bookstore
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: install eslint dependencies
+        run: |
+          npm config set cache-folder .npm
+          npm i eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks --legacy-peer-deps
+
+      - name: run eslint
+        run: node_modules/eslint/bin/eslint.js .
