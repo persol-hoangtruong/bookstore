@@ -12,6 +12,7 @@
 const prettierConfig = require("./.prettierrc");
 const packageJSON = require("./package.json");
 
+
 module.exports = {
   root: true,
 
