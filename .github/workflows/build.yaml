@@ -1,5 +1,5 @@
-name: Verify commit
-run-name: ${{ github.actor }} is verifying commit
+name: Build
+run-name: ${{ github.actor }} is building ...
 on:
   push:
     branches:
