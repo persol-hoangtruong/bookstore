@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Home() {
-  return <div>Bookstore</div>;
+  return <div>Bookstore v2</div>;
 }
