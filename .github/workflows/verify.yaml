@@ -27,6 +27,7 @@ jobs:
         run: node_modules/eslint/bin/eslint.js .
 
   testing:
+    needs: eslint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
