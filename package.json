@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "yarn lint-staged",
     "lint:eslint": "eslint --ignore-pattern \"submodules/**\" \"./**/*.{js,jsx,ts,tsx}\"",
     "lint:staged": "lint-staged",
     "postinstall": "husky install",
