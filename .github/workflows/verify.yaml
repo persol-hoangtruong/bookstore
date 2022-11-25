@@ -25,3 +25,18 @@ jobs:
 
       - name: run eslint
         run: node_modules/eslint/bin/eslint.js .
+
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: install eslint dependencies
+        run: |
+          yarn add jest @testing-library/react @testing-library/jest-dom
+
+      - name: run eslint
+        run: node_modules/jest/bin/jest.js .
