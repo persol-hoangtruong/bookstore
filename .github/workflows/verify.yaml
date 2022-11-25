@@ -34,9 +34,9 @@ jobs:
         with:
           node-version: latest
 
-      - name: install eslint dependencies
+      - name: install testing dependencies
         run: |
           yarn add jest @testing-library/react @testing-library/jest-dom
 
-      - name: run eslint
+      - name: run test
         run: node_modules/jest/bin/jest.js .
