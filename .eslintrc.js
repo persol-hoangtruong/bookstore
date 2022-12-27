@@ -256,7 +256,7 @@ module.exports = {
     // "<></>" is not pretty
     "react/jsx-fragments": "off",
 
-    "react/react-in-jsx-scope": "warn",
+    "react/react-in-jsx-scope": "off",
 
     // Prevents rendering errors due to missing keys
     "react/jsx-key": [
@@ -362,7 +362,7 @@ module.exports = {
     ],
 
     // Use correct typings or unknown
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
 
     // ==> prettier
     // 'prettier/prettier': 'warn',
@@ -386,11 +386,14 @@ module.exports = {
 
     //  As discussed with team, some time <img /> give a better performance.
     "@next/next/no-img-element": "off",
+    "react/function-component-definition": "off",
+    "react/destructuring-assignment": "off",
+    "react/jsx-no-useless-fragment": "off",
 
     // when using a tag as children of next/link, href is not required
     // https://nextjs.org/docs/api-reference/next/link
     "jsx-a11y/anchor-is-valid": [
-      "error",
+      "warn",
       {
         components: ["Link"],
         specialLink: ["hrefLeft", "hrefRight"],
@@ -404,10 +407,7 @@ module.exports = {
   settings: {
     // ==> eslint-plugin-import
     "import/resolver": {
-      node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-        moduleDirectory: ["src", "node_modules"],
-      },
+      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
     },
 
     "import/core-modules": ["styled-jsx/css"],
