@@ -1,0 +1,27 @@
+type: object
+x-tags:
+  - Common
+properties:
+  code:
+    type: number
+  message:
+    type: string
+  errors:
+    type: object
+    properties:
+      property:
+        type: array
+        items:
+          type: string
+required:
+  - code
+  - message
+  - errors
+example:
+  code: 400
+  message: Bad Request
+  errors:
+    property:
+      type: array
+      items:
+        - example: Error 1

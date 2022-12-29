@@ -1,0 +1,29 @@
+title: News
+type: object
+x-tags:
+  - News
+properties:
+  id:
+    type: string
+  title:
+    type: string
+  updatedAt:
+    type: string
+  thumbUrl:
+    type: string
+  externalLink:
+    type: string
+  mediaName:
+    type: string
+  providerName:
+    type: string
+required:
+  - id
+example:
+  id: 1
+  title: コンテンツのname
+  updatedAt: コンテンツのupdatedAt
+  thumbUrl: コンテンツのサムネイル画像URL
+  externalLink: コンテンツの外部遷移用URL
+  mediaName: コンテンツの媒体名
+  providerName: コンテンツの提供元

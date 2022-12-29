@@ -1,0 +1,6 @@
+code:
+  type: number
+  code: 201
+message:
+  type: string
+  message: Created

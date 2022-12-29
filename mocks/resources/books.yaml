@@ -1,0 +1,33 @@
+get:
+  summary: Get Books
+  tags:
+    - Books
+  operationId: GetBooks
+
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: number
+                example: 200
+              message:
+                type: string
+                example: Success
+              data:
+                $ref: '../schemas/models/BooksConnection.yaml'
+            required:
+              - code
+              - message
+              - data
+    '401':
+      $ref: '../responses/401.yaml'
+    default:
+      $ref: '../responses/Error.yaml'
+
+  # parameters:
+  #   - $ref: '../parameters/query/limit.yaml'
+  #   - $ref: '../parameters/query/page.yaml'

@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Overview Data
+  version: "1.0"
+components:
+  schemas:
+    Books:
+      type: object
+      properties:
+        message:
+          type: string
+          example: success
+        code:
+          type: number
+          example: 200
+        data:
+          type: array
+          items:
+            anyOf:
+              type: object
+              properties:
+                id: 
+                  type: string
+                title:
+                  type: string
+          example:
+            - id: 'B084F96GFZ'
+              title: 'Voice of War'
+            - id: '0525509283'
+              title: 'How to Be an Antiracist'
+servers:
+  - url: "http://127.0.0.1:4010"
+paths:
+  /books:
+    $ref: './resources/books.yaml'
+    # get:
+    #   summary: Get Books
+    #   tags:
+    #     - Books
+    #   responses:
+    #     "200":
+    #       description: OK
+    #       content:
+    #         application/json:
+    #           schema:
+    #             $ref: '#/components/schemas/Books'

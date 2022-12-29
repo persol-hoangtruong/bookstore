@@ -1,0 +1,14 @@
+type: object
+x-tags:
+  - Common
+properties:
+  code:
+    type: number
+  message:
+    type: string
+required:
+  - code
+  - message
+example:
+  code: 404
+  message: Not Found

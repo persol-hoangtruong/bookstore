@@ -191,17 +191,7 @@ module.exports = {
     //   }
     "operator-linebreak": ["error", "after"],
 
-    "padded-blocks": [
-      "error",
-      {
-        // blocks: "never", Allows both "if" blocks and function blocks padding
-        classes: "always",
-        switches: "always",
-      },
-      {
-        allowSingleLineBlocks: true,
-      },
-    ],
+    "padded-blocks": "off",
 
     "padding-line-between-statements": [
       "error",
@@ -389,6 +379,7 @@ module.exports = {
     "react/function-component-definition": "off",
     "react/destructuring-assignment": "off",
     "react/jsx-no-useless-fragment": "off",
+    "lines-between-class-members": "off",
 
     // when using a tag as children of next/link, href is not required
     // https://nextjs.org/docs/api-reference/next/link
