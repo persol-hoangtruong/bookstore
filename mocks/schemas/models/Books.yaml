@@ -7,23 +7,23 @@ properties:
     type: string
   title:
     type: string
-  updatedAt:
+  author:
     type: string
-  thumbUrl:
+  coverImageUrl:
     type: string
-  externalLink:
+  pageCount:
     type: string
-  mediaName:
+  publisher:
     type: string
-  providerName:
+  synopsis:
     type: string
 required:
   - id
 example:
-  id: 1
-  title: コンテンツのname
-  updatedAt: コンテンツのupdatedAt
-  thumbUrl: コンテンツのサムネイル画像URL
-  externalLink: コンテンツの外部遷移用URL
-  mediaName: コンテンツの媒体名
-  providerName: コンテンツの提供元
+  title: Voice of War,
+  author: Zack Argyle,
+  coverImageUrl: https://images-na.ssl-images-amazon.com/images/I/41JodZ5Vl%2BL.jpg,
+  id: B084F96GFZ,
+  pageCount: 372,
+  publisher: Self Published,
+  synopsis: Chrys Valerian is a threadweaver, a high general, and soon-to-be father. But to the people of Alchea, he is the Apogee—the man who won the war.\n\nWhen a stranger's prophecy foretells danger to Chrys' child, he must do everything in his power to protect his family—even if the most dangerous enemy is the voice in his own head.\n\nTo the west, a sheltered girl seeks to find her place in the world.\n\nTo the south, a young man's life changes after he dies.\n\nTogether, they will change the world—whether they intend to or not.

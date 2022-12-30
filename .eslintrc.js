@@ -380,6 +380,7 @@ module.exports = {
     "react/destructuring-assignment": "off",
     "react/jsx-no-useless-fragment": "off",
     "lines-between-class-members": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
 
     // when using a tag as children of next/link, href is not required
     // https://nextjs.org/docs/api-reference/next/link

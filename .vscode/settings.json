@@ -114,7 +114,7 @@
     "editor.formatOnSave": false
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.formatOnPaste": false,
     "editor.formatOnSave": false
   },

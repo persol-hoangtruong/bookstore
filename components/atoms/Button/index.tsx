@@ -2,14 +2,7 @@ import { Button as AntButton, ButtonProps as AntButtonProps } from "antd";
 import { ReactElement } from "react";
 
 
-declare const ButtonTypes: [
-  "default",
-  "primary",
-  "ghost",
-  "dashed",
-  "link",
-  "text"
-];
+declare const ButtonTypes: ["default", "primary", "ghost", "dashed", "link", "text"];
 
 export declare type ButtonType = typeof ButtonTypes[number];
 
