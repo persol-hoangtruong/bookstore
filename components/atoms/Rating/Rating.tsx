@@ -24,8 +24,6 @@ export declare interface RatingProps {
 function Rating({ book }: RatingProps) {
   const [isTabbing, setIsTabbing] = React.useState(false);
 
-  // const [mutate, { error, isError }] = useUpdateListItem();
-
   React.useEffect(() => {
     function handleKeyDown(event: any) {
       if (event.key === "Tab") {
@@ -50,18 +48,11 @@ function Rating({ book }: RatingProps) {
           id={ratingId}
           value={ratingValue}
           checked={ratingValue === book.rating}
-          onChange={() => {
-            // mutate({ id: book.id, rating: ratingValue });
-          }}
           className={css([
             visuallyHiddenCSS,
             {
               [`.${rootClassName} &:checked ~ label`]: { color: colors.gray20 },
               [`.${rootClassName} &:checked + label`]: { color: colors.orange },
-              // !important is here because we're doing special non-css-in-js things
-              // and so we have to deal with specificity and cascade. But, I promise
-              // this is better than trying to make this work with JavaScript.
-              // So deal with it 😎
               [`.${rootClassName} &:hover ~ label`]: {
                 color: `${colors.gray20} !important`,
               },
@@ -118,9 +109,6 @@ function Rating({ book }: RatingProps) {
       ])}
     >
       <span className={css([{ display: "flex" }])}>{stars}</span>
-      {/* {isError ? (
-        <ErrorMessage error={error} variant="inline" css={{ marginLeft: 6, fontSize: "0.7em" }} />
-      ) : null} */}
     </div>
   );
 }

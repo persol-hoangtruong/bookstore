@@ -32,7 +32,7 @@ const loadingWrapperCss = css`
   left: 0;
   z-index: 1000;
 
-  opacity: 0.7;
+  opacity: 0.2;
   color: rgba(0, 0, 0, 0.88);
   background-color: rgba(0, 0, 0, 0.45);
 `;

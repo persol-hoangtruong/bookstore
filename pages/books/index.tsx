@@ -35,6 +35,7 @@ export default function Books() {
 
 const bookCss = css`
   width: 100%;
+  margin-top: 48px;
 `;
 
 const bookWrapperCss = css([

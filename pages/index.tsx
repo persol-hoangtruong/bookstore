@@ -1,12 +1,26 @@
+import { useRouter } from "next/router";
 import React from "react";
 
-import { Spinner } from "~@/components/atoms";
+import SpinnerMaster from "~@/components/molecules/SpinnerMaster/SpinnerMaster";
+import { useAuth } from "~@/contexts/authContext";
 
 
 export default function Home() {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (!user) router.push("/login");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
   return (
-    <div>
-      Bookstore v2 <Spinner />
-    </div>
+    <SpinnerMaster />
   );
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
 }
