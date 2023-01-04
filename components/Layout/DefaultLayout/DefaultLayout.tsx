@@ -1,9 +1,10 @@
 import { css } from "@emotion/css";
+import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/router";
 import React from "react";
 
 import Header from "~@/components/Layout/Header/Header";
-import { useAuth } from "~@/contexts/authContext";
+import { firebaseAuth } from "~@/utils/authProvider";
 
 
 export declare interface DefaultLayoutProps {
@@ -12,19 +13,23 @@ export declare interface DefaultLayoutProps {
 
 export default function DefaultLayout({ children }: DefaultLayoutProps) {
   const router = useRouter();
-  const { user } = useAuth();
 
   const isLoginPage = router.asPath === "/login";
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
   React.useEffect(() => {
-    if (!user) {
-      router.push("/login");
-      return;
-    }
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const authStateChanged = onAuthStateChanged(firebaseAuth, async (user: unknown) => {
+      // eslint-disable-next-line no-unused-expressions
+      !user && !isLoginPage && (await router.push("/login"));
+      setIsAuthenticated(true);
+    });
 
-    setIsAuthenticated(true);
-  }, [router, user]);
+    return () => {
+      authStateChanged();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isLoginPage) {
     return (

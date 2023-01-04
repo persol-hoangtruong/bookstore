@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
 import {
+  browserSessionPersistence,
   createUserWithEmailAndPassword,
-  getAuth,
+  initializeAuth,
   signInWithEmailAndPassword,
   signOut as signOutFirebase,
 } from "firebase/auth";
@@ -15,18 +16,20 @@ export declare type UserCredential = {
 }
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBBIGuaL4VthgfuQAajV_lgycx6kIxFmcg",
-  authDomain: "training-2021-153c1.firebaseapp.com",
+  apiKey: process.env.NEXT_PUBLIC_IDENTITY_PLATFORM_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_IDENTITY_PLATFORM_AUTH_DOMAIN,
   projectId: "training-2021-153c1",
   storageBucket: "training-2021-153c1.appspot.com",
   messagingSenderId: "824080689056",
   appId: "1:824080689056:web:ba64aefc6dd05e13baa6c5",
 };
 
-export const auth = getAuth(initializeApp(firebaseConfig));
+export const firebaseAuth = initializeAuth(initializeApp(firebaseConfig), {
+  persistence: browserSessionPersistence,
+});
 
 export async function login({ email, password }: UserCredential) {
-  return signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(firebaseAuth, email, password)
     .then((data: any) => {
       window.localStorage.setItem(localStorageKey, data?.user?.accessToken);
       return Promise.resolve(data);
@@ -35,7 +38,7 @@ export async function login({ email, password }: UserCredential) {
 }
 
 export async function register({ email, password }: UserCredential) {
-  return createUserWithEmailAndPassword(auth, email, password)
+  return createUserWithEmailAndPassword(firebaseAuth, email, password)
     .then((data: any) => {
       window.localStorage.setItem(localStorageKey, data?.user?.accessToken);
       return Promise.resolve(data);
@@ -45,5 +48,5 @@ export async function register({ email, password }: UserCredential) {
 
 export async function signOut() {
   window.localStorage.removeItem(localStorageKey);
-  return signOutFirebase(auth);
+  return signOutFirebase(firebaseAuth);
 }
