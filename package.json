@@ -38,6 +38,7 @@
     "eslint": "8.28.0",
     "eslint-config-next": "^13.0.5",
     "faker": "^6.6.6",
+    "firebase": "^9.15.0",
     "moment": "^2.29.4",
     "next": "13.0.5",
     "next-connect": "^0.13.0",

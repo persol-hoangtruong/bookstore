@@ -8,26 +8,26 @@ import { FormItem } from "~@/components/atoms/FormItem";
 import { Input } from "~@/components/atoms/Input";
 
 
-export declare type LoginForm = {
+export declare type RegisterForm = {
   email: string,
   password: string
 }
 
-export declare interface LoginFormProps {
-  onSubmit: (values: LoginForm) => void;
+export declare interface RegisterFormProps {
+  onSubmit: (values: RegisterForm) => void;
   loading?: boolean;
 }
 
-export function LoginForm({ onSubmit, loading }: LoginFormProps) {
+export function RegisterForm({ onSubmit, loading }: RegisterFormProps) {
   const router = useRouter();
   const [form] = useForm();
 
-  const handleSubmit = (values: LoginForm) => {
+  const handleSubmit = (values: RegisterForm) => {
     onSubmit?.(values);
   };
 
-  const onRegisterClick = () => {
-    router.push("/register");
+  const onLoginClick = () => {
+    router.push("/login");
   };
 
   return (
@@ -48,6 +48,7 @@ export function LoginForm({ onSubmit, loading }: LoginFormProps) {
       >
         <Input />
       </FormItem>
+
       <FormItem
         label="Password"
         name="password"
@@ -61,9 +62,32 @@ export function LoginForm({ onSubmit, loading }: LoginFormProps) {
         <Input type="password" />
       </FormItem>
 
+      <FormItem
+        label="Confirm Password"
+        name="confirmPassword"
+        dependencies={["password"]}
+        rules={[
+          {
+            required: true,
+            message: "Please Password must not be empty",
+          },
+          ({ getFieldValue }) => ({
+            validator: function (_, value) {
+              if (!value || getFieldValue("password") === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(new Error("Passwords that you entered do not match!"));
+            },
+          }),
+        ]}
+
+      >
+        <Input type="password" />
+      </FormItem>
+
       <FormItem className={buttonGroupCss}>
-        <Button htmlType="submit" loading={loading} type="primary">Login</Button>
-        <Button disabled={loading} onClick={onRegisterClick}>Register</Button>
+        <Button htmlType="submit" loading={loading} type="primary">Register</Button>
+        <Button disabled={loading} onClick={onLoginClick}>Login</Button>
       </FormItem>
     </Form>
   );

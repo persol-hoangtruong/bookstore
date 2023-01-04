@@ -2,13 +2,13 @@ import { css } from "@emotion/css";
 import { useRouter } from "next/router";
 import React from "react";
 
-import { LoginForm } from "~@/components/organisms/LoginForm/LoginForm";
+import { RegisterForm } from "~@/components/organisms/RegisterForm/RegisterForm";
 import { useAuth } from "~@/contexts/authContext";
 
 
-export default function Login() {
+export default function Register() {
   const router = useRouter();
-  const { user, login, loading } = useAuth();
+  const { user, register, loading } = useAuth();
 
   React.useEffect(() => {
     if (user) { router.push("/books"); }
@@ -18,7 +18,7 @@ export default function Login() {
     <>
       <div className={loginCss}>
         <div className={loginControlCss}>
-          <LoginForm onSubmit={login} loading={loading} />
+          <RegisterForm onSubmit={register} loading={loading} />
         </div>
       </div>
     </>
