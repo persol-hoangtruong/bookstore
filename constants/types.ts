@@ -8,10 +8,6 @@ export enum AuthTypes {
   Signup = "SIGNUP",
 }
 
-export interface User {
-  username: string;
-}
-
 export type AuthUser = null | User;
 
 export type JWTAuthPayload = {
@@ -92,4 +88,12 @@ export interface TypographyProps {
   strong?: boolean;
   keyboard?: boolean;
   italic?: boolean;
+}
+
+export declare interface User {
+  displayName?: string;
+  email: string;
+  uid: string;
+  photoURL?: string;
+  phoneNumber?: string;
 }

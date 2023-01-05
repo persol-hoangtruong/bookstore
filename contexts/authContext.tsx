@@ -1,12 +1,9 @@
 import { message } from "antd";
 import React from "react";
 
+import { User } from "~@/constants/types";
 import * as auth from "~@/utils/authProvider";
 
-
-export declare type User = {
-  accessToken: string;
-};
 
 export declare type UserCredential = {
   email: string;
@@ -19,6 +16,7 @@ export declare interface AuthContext {
   login: (user: UserCredential) => void;
   logOut: () => void;
   register: (user: UserCredential) => void;
+  setUser: (user: User) => void;
   loading: boolean;
 }
 
@@ -36,7 +34,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     (userCredential: UserCredential) => {
       setLoading(true);
       auth.login(userCredential).then((res) => {
-        setUser(res?.user as unknown as User);
+        const {
+          uid,
+          email,
+          photoURL,
+          displayName,
+          phoneNumber,
+        } = res?.user || {};
+
+        setUser({
+          uid: uid,
+          email: email,
+          photoURL: photoURL,
+          displayName: displayName,
+          phoneNumber: phoneNumber,
+        });
+
         setError(undefined);
         setLoading(false);
       }).catch(({ code }) => {
@@ -84,6 +97,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     loading: loading,
     login: login,
     logOut: logOut,
+    setUser: setUser,
     register: register,
   }), [user, error, loading, login, logOut, register]);
 
