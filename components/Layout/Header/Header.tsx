@@ -1,7 +1,10 @@
+import { UserOutlined } from "@ant-design/icons";
 import { css } from "@emotion/css";
+import { Dropdown } from "antd";
 import Link from "next/link";
 import React from "react";
 
+import { Avatar } from "~@/components/atoms";
 import { useAuth } from "~@/contexts/authContext";
 import * as mq from "~@/styles/media-queries";
 
@@ -13,19 +16,43 @@ export declare type Link = {
 
 
 export default function Header() {
-  const { user } = useAuth();
+  const { logOut } = useAuth();
 
   // eslint-disable-next-line max-len
   const renderNavLinks = (menu: Link[]) => menu.map((link: Link) => <Link key={link.href} href={link.href}>{link.as}</Link>);
 
+  const items: any = [
+    {
+      key: "1",
+      label: (
+        <div onClick={logOut}>
+          Logout
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className={headerCss}>
       <div className={navCss}>
-        {user && renderNavLinks(links)}
+        {renderNavLinks(links)}
+
+        <Dropdown menu={{ items: items }} trigger={["click"]}>
+          <Avatar
+            style={{
+              backgroundColor: "#f56a00",
+              verticalAlign: "middle",
+              cursor: "pointer",
+            }}
+            size="default"
+            icon={<UserOutlined />}
+          />
+        </Dropdown>
       </div>
     </div>
   );
 }
+
 
 const links = [
   {

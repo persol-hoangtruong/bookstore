@@ -19,6 +19,7 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
   const { setUser } = useAuth();
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
+
   React.useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const authStateChanged = onAuthStateChanged(firebaseAuth, async (user: any) => {
@@ -32,8 +33,10 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
 
 
       // eslint-disable-next-line no-unused-expressions
-      !user && !isLoginPage && (await router.push("/login"));
-
+      if (!user && !isLoginPage) {
+        await router.push("/login");
+        return;
+      }
 
       setUser({
         uid: uid,

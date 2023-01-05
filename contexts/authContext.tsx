@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = React.useCallback(
     (userCredential: UserCredential) => {
       setLoading(true);
-      auth.login(userCredential).then((res) => {
+      auth.login(userCredential).then((res: any) => {
         const {
           uid,
           email,
@@ -67,7 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     (userCredential: UserCredential) => {
       setLoading(true);
 
-      auth.register(userCredential).then((res) => {
+      auth.register(userCredential).then((res: any) => {
         setUser(res?.user as unknown as User);
         setError(undefined);
         setLoading(false);
