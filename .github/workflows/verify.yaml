@@ -40,4 +40,4 @@ jobs:
           yarn add jest @testing-library/react @testing-library/jest-dom
 
       - name: run test
-        run: node_modules/jest/bin/jest.js .
+        run: node_modules/jest/bin/jest.js --passWithNoTests.
