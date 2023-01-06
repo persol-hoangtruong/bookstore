@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { useClient } from "~@/contexts/authContext";
 import { Book } from "~@/models/books";
 
 
 export function useGetBooks({ onCompleted }: { [key: string]: any } = {}) {
+  const client = useClient();
+
   const { data, error, isLoading } = useQuery({
     queryKey: [QUERY_KEY],
-    queryFn: () => fetch("/api/books").then((res) => res.json()),
+    queryFn: () => client("/api/books"),
     onSuccess: onCompleted,
     onError: onCompleted,
   });

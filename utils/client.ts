@@ -1,11 +1,12 @@
 import { QueryCache } from "@tanstack/react-query";
+import axios, { AxiosRequestConfig } from "axios";
 
 import { firebaseAuth } from "./authProvider";
 
 
 const queryCache = new QueryCache();
 
-export declare interface ClientConfig {
+export declare interface ClientConfig extends AxiosRequestConfig {
   data?: any;
   token?: string;
   headers?: any;
@@ -26,7 +27,9 @@ export async function client(
     ...customConfig,
   };
 
-  return fetch(endpoint, config).then(async (res) => {
+  return axios(endpoint, {
+    ...config,
+  }).then(async (res) => {
     if (res.status === 401) {
       queryCache.clear();
       await firebaseAuth.signOut();
@@ -34,8 +37,8 @@ export async function client(
       return Promise.reject({ message: "Please re-authenticate" });
     }
 
-    const data = await res.json();
-    if (res.ok) return data;
+    const data = await res.data;
+    if (res.statusText === "OK") return data;
     return Promise.reject(data);
   });
 }

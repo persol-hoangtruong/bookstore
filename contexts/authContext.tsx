@@ -3,6 +3,7 @@ import React from "react";
 
 import { User } from "~@/constants/types";
 import * as auth from "~@/utils/authProvider";
+import { client } from "~@/utils/client";
 
 
 export declare type UserCredential = {
@@ -117,3 +118,11 @@ export function useAuth() {
   return context as AuthContext;
 }
 
+export function useClient() {
+  const user = auth.firebaseAuth?.currentUser;
+
+  return React.useCallback((endpoint: string, config: any = {}) => client(endpoint, {
+    ...config,
+    token: user?.accessToken,
+  }), [user]);
+}
