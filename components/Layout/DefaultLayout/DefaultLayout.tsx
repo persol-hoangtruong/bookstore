@@ -52,7 +52,7 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
     return () => {
       authStateChanged();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoginPage) {
@@ -66,7 +66,10 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
   return isAuthenticated ? (
     <div className={layoutCss}>
       <Header />
-      {children}
+
+      <div className={bodyCss}>
+        {children}
+      </div>
     </div>
   ) : null;
 }
@@ -78,3 +81,9 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
 const layoutCss = css([{
   maxWidth: "100%",
 }]);
+
+const bodyCss = css`
+  flex: auto;
+  min-height: 0;
+  overflow-x: hidden;
+`;

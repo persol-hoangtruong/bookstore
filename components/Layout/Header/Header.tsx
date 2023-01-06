@@ -80,7 +80,7 @@ const headerCss = css([{
   position: "relative",
   background: "#ffffff",
 
-  boxShadow: "0 1px 2px 0 rgb(0 0 0 / 3%), 0 1px 6px -1px rgb(0 0 0 / 2%), 0 2px 4px 0 rgb(0 0 0 / 2%)",
+  boxShadow: "0 0 4px 4px rgb(0 0 0 / 8%)",
   [mq.small]: {
     position: "static",
     top: "auto",

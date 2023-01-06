@@ -1,4 +1,6 @@
 import "~@/styles/globals.scss";
+import "~@/styles/fonts/noir-pro/styles.css";
+import "~@/styles/fonts/gaxon/styles.css";
 
 import {
   QueryClient,
